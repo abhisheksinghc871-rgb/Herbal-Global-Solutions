@@ -1,40 +1,108 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Products", href: "/products" },
+    { name: "Industries", href: "/industries" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
-    <nav className="w-full bg-white shadow-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <nav className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
+      <div className="mx-auto max-w-7xl px-6">
+        
+        <div className="flex h-20 items-center justify-between">
+          
+          <Link
+            href="/"
+            className="text-xl font-bold text-green-700 md:text-2xl"
+          >
+            Herbal Global Solutions
+          </Link>
 
-        <Link
-          href="/"
-          className="text-2xl font-bold text-green-700"
-        >
-          Herbal Global Solutions
-        </Link>
+          {/* Desktop Menu */}
 
-        <ul className="flex gap-8 font-medium text-gray-700">
+          <div className="hidden items-center gap-8 md:flex">
+            <ul className="flex gap-8 font-medium">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`transition hover:text-green-700 ${
+                      pathname === link.href
+                        ? "font-semibold text-green-700"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-          <li>
-            <Link href="/">Home</Link>
-          </li>
+            <Link
+              href="/contact"
+              className="rounded-lg bg-green-700 px-5 py-3 text-white transition hover:bg-green-800"
+            >
+              Get Quote
+            </Link>
+          </div>
 
-          <li>
-            <Link href="/about">About</Link>
-          </li>
+          {/* Mobile Button */}
 
-          <li>
-            <Link href="/products">Products</Link>
-          </li>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-3xl text-green-700 md:hidden"
+          >
+            {isOpen ? "✕" : "☰"}
+          </button>
 
-          <li>
-            <Link href="/industries">Industries</Link>
-          </li>
+        </div>
 
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
+        {/* Mobile Menu */}
 
-        </ul>
+        {isOpen && (
+          <div className="border-t py-4 md:hidden">
+            <ul className="flex flex-col gap-4 font-medium">
+
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`block transition hover:text-green-700 ${
+                      pathname === link.href
+                        ? "font-semibold text-green-700"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+
+              <li>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-2 inline-block rounded-lg bg-green-700 px-5 py-3 text-white transition hover:bg-green-800"
+                >
+                  Get Quote
+                </Link>
+              </li>
+
+            </ul>
+          </div>
+        )}
 
       </div>
     </nav>

@@ -1,80 +1,80 @@
+const industries = [
+  {
+    icon: "🏥",
+    title: "Pharmaceutical Industry",
+    description:
+      "High-quality herbal extracts and active ingredients for pharmaceutical formulations.",
+  },
+  {
+    icon: "💊",
+    title: "Nutraceutical Industry",
+    description:
+      "Premium ingredients for dietary supplements and wellness products.",
+  },
+  {
+    icon: "💄",
+    title: "Cosmetic Industry",
+    description:
+      "Natural botanical extracts for skincare, beauty and personal care solutions.",
+  },
+  {
+    icon: "🍵",
+    title: "Food & Beverage",
+    description:
+      "Herbal powders and natural ingredients for food and beverage applications.",
+  },
+  {
+    icon: "🐄",
+    title: "Animal Nutrition",
+    description:
+      "Specialized herbal ingredients used in feed and animal nutrition products.",
+  },
+  {
+    icon: "🧪",
+    title: "Research & Development",
+    description:
+      "Reliable ingredients supplied for research, innovation and product development.",
+  },
+];
+
 export default function IndustriesServed() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-gradient-to-b from-white to-green-50 py-20">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 text-center">
+
+        <div className="mb-14 text-center">
           <h2 className="text-4xl font-bold text-green-800">
             Industries We Serve
           </h2>
 
           <p className="mt-4 text-lg text-gray-600">
-            Supplying premium herbal ingredients to diverse industries worldwide.
+            Supplying premium herbal ingredients to industries across global markets.
           </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
-          <div className="rounded-xl border p-8 shadow-sm transition hover:shadow-lg">
-            <h3 className="mb-3 text-2xl font-semibold text-green-700">
-              🏥 Pharma Industry
-            </h3>
+          {industries.map((industry) => (
+            <div
+              key={industry.title}
+              className="rounded-2xl bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+            >
+              <div className="mb-5 text-5xl">
+                {industry.icon}
+              </div>
 
-            <p className="text-gray-600">
-              Herbal extracts and active ingredients for pharmaceutical applications.
-            </p>
-          </div>
+              <h3 className="mb-3 text-2xl font-semibold text-green-700">
+                {industry.title}
+              </h3>
 
-          <div className="rounded-xl border p-8 shadow-sm transition hover:shadow-lg">
-            <h3 className="mb-3 text-2xl font-semibold text-green-700">
-              💊 Nutraceutical Industry
-            </h3>
-
-            <p className="text-gray-600">
-              High-quality ingredients for supplements and wellness products.
-            </p>
-          </div>
-
-          <div className="rounded-xl border p-8 shadow-sm transition hover:shadow-lg">
-            <h3 className="mb-3 text-2xl font-semibold text-green-700">
-              💄 Cosmetic Industry
-            </h3>
-
-            <p className="text-gray-600">
-              Natural extracts for skincare, beauty and personal care formulations.
-            </p>
-          </div>
-
-          <div className="rounded-xl border p-8 shadow-sm transition hover:shadow-lg">
-            <h3 className="mb-3 text-2xl font-semibold text-green-700">
-              🍵 Food & Beverage
-            </h3>
-
-            <p className="text-gray-600">
-              Herbal powders and ingredients for food and beverage products.
-            </p>
-          </div>
-
-          <div className="rounded-xl border p-8 shadow-sm transition hover:shadow-lg">
-            <h3 className="mb-3 text-2xl font-semibold text-green-700">
-              🐄 Animal Nutrition
-            </h3>
-
-            <p className="text-gray-600">
-              Herbal ingredients used in animal feed and nutrition products.
-            </p>
-          </div>
-
-          <div className="rounded-xl border p-8 shadow-sm transition hover:shadow-lg">
-            <h3 className="mb-3 text-2xl font-semibold text-green-700">
-              🧪 Research & Development
-            </h3>
-
-            <p className="text-gray-600">
-              Specialized ingredients supplied for research and product development.
-            </p>
-          </div>
+              <p className="text-gray-600 leading-7">
+                {industry.description}
+              </p>
+            </div>
+          ))}
 
         </div>
+
       </div>
     </section>
   );

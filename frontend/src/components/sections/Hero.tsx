@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -25,13 +26,21 @@ export default function Hero() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <button className="rounded-lg bg-green-700 px-8 py-4 text-white hover:bg-green-800">
-                Request a Quote
-              </button>
 
-              <button className="rounded-lg border border-green-700 px-8 py-4 text-green-700 hover:bg-green-100">
+              <Link
+                href="/contact"
+                className="rounded-lg bg-green-700 px-8 py-4 text-white transition hover:bg-green-800"
+              >
+                Request a Quote
+              </Link>
+
+              <Link
+                href="/products"
+                className="rounded-lg border border-green-700 px-8 py-4 text-green-700 transition hover:bg-green-100"
+              >
                 Explore Products
-              </button>
+              </Link>
+
             </div>
 
             <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
@@ -66,6 +75,24 @@ export default function Hero() {
 
             </div>
 
+            {/* Trust Badges */}
+
+            <div className="mt-10 flex flex-wrap gap-3">
+
+              <span className="rounded-full bg-green-100 px-4 py-2 text-sm text-green-700">
+                ISO Certified
+              </span>
+
+              <span className="rounded-full bg-green-100 px-4 py-2 text-sm text-green-700">
+                GMP Certified
+              </span>
+
+              <span className="rounded-full bg-green-100 px-4 py-2 text-sm text-green-700">
+                Export Ready
+              </span>
+
+            </div>
+
           </div>
 
           {/* Right Side */}
@@ -77,8 +104,8 @@ export default function Hero() {
               alt="Herbal Ingredients"
               width={700}
               height={700}
-              className="rounded-3xl shadow-2xl"
               priority
+              className="rounded-3xl shadow-2xl transition duration-500 hover:scale-105"
             />
 
           </div>
