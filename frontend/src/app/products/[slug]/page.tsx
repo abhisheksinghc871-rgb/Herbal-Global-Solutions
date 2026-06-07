@@ -310,35 +310,77 @@ export default async function ProductDetailPage({
       <section className="bg-white py-20">
         <div className="mx-auto max-w-5xl px-6">
                     <h2 className="mb-10 text-4xl font-bold text-green-800">
-            Specifications
-          </h2>
+  Specifications
+</h2>
 
-          <div className="overflow-hidden rounded-2xl border text-black">
-            <div className="grid grid-cols-2 border-b p-5">
-              <span className="font-semibold">Product Type</span>
-              <span>{product.specifications.type}</span>
-            </div>
+<div className="overflow-hidden rounded-2xl border text-black">
+  <div className="grid grid-cols-2 border-b p-5">
+    <span className="font-semibold">Product Type</span>
+    <span>{product.specifications.type}</span>
+  </div>
 
-            <div className="grid grid-cols-2 border-b p-5">
-              <span className="font-semibold">Form</span>
-              <span>{product.specifications.form}</span>
-            </div>
+  <div className="grid grid-cols-2 border-b p-5">
+    <span className="font-semibold">Form</span>
+    <span>{product.specifications.form}</span>
+  </div>
 
-            <div className="grid grid-cols-2 border-b p-5">
-              <span className="font-semibold">Quality</span>
-              <span>{product.specifications.quality}</span>
-            </div>
+  <div className="grid grid-cols-2 border-b p-5">
+    <span className="font-semibold">Quality</span>
+    <span>{product.specifications.quality}</span>
+  </div>
 
-            <div className="grid grid-cols-2 p-5">
-              <span className="font-semibold">Packaging</span>
-              <span>{product.specifications.packaging}</span>
-            </div>
-          </div>
+  <div className="grid grid-cols-2 p-5">
+    <span className="font-semibold">Packaging</span>
+    <span>{product.specifications.packaging}</span>
+  </div>
+</div>
 
-        </div>
-      </section>
+</div>
+</section>
 
-      {/* Inquiry Section */}
+<section className="bg-green-50 py-20">
+  <div className="mx-auto max-w-5xl px-6">
+
+    <h2 className="mb-10 text-4xl font-bold text-green-800">
+      Commercial Information
+    </h2>
+
+    <div className="overflow-hidden rounded-2xl border bg-white text-black">
+
+      <div className="grid grid-cols-2 border-b p-5">
+        <span className="font-semibold">
+          Minimum Order Quantity
+        </span>
+        <span>Available On Request</span>
+      </div>
+
+      <div className="grid grid-cols-2 border-b p-5">
+        <span className="font-semibold">
+          Packaging
+        </span>
+        <span>25 Kg Drum / Export Packaging</span>
+      </div>
+
+      <div className="grid grid-cols-2 border-b p-5">
+        <span className="font-semibold">
+          Country Of Origin
+        </span>
+        <span>India</span>
+      </div>
+
+      <div className="grid grid-cols-2 p-5">
+        <span className="font-semibold">
+          Lead Time
+        </span>
+        <span>7–15 Working Days</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{/* Inquiry Section */}
 
       <section className="bg-white py-20">
         <div className="mx-auto max-w-5xl px-6 text-center">

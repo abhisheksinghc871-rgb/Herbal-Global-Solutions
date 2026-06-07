@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -19,14 +20,25 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-6">
-        
+
         <div className="flex h-20 items-center justify-between">
-          
+
+          {/* Logo */}
+
           <Link
             href="/"
-            className="text-xl font-bold text-green-700 md:text-2xl"
+            className="flex items-center gap-3"
           >
-            Herbal Global Solutions
+           <Image
+  src="/images/logo.png"
+  alt="Herbal Global Solutions"
+  width={320}
+  height={120}
+  priority
+  className="h-16 w-auto object-contain"
+/>
+
+            
           </Link>
 
           {/* Desktop Menu */}
@@ -72,6 +84,7 @@ export default function Navbar() {
 
         {isOpen && (
           <div className="border-t py-4 md:hidden">
+
             <ul className="flex flex-col gap-4 font-medium">
 
               {navLinks.map((link) => (
@@ -101,6 +114,7 @@ export default function Navbar() {
               </li>
 
             </ul>
+
           </div>
         )}
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -10,15 +11,37 @@ export default function Footer() {
           {/* Company Info */}
 
           <div>
-            <h3 className="mb-4 text-2xl font-bold text-green-400">
-              Herbal Global Solutions
-            </h3>
+            <Link href="/" className="inline-block">
+  <Image
+    src="/images/logo.png"
+    alt="Herbal Global Solutions"
+    width={280}
+    height={90}
+    className="h-20 w-auto brightness-110"
+  />
+</Link>
 
-            <p className="text-gray-400 leading-7">
-              Premium herbal ingredients supplier serving
-              pharmaceutical, nutraceutical, cosmetic and food
-              industries across global markets.
-            </p>
+<p className="mt-5 text-gray-400 leading-7">
+  Premium herbal ingredients supplier serving
+  pharmaceutical, nutraceutical, cosmetic and food
+  industries across global markets.
+</p>
+
+<div className="mt-6 flex gap-3">
+
+  <span className="rounded-full bg-green-900 px-3 py-1 text-sm text-green-300">
+    Export Ready
+  </span>
+
+  <span className="rounded-full bg-green-900 px-3 py-1 text-sm text-green-300">
+    GMP Certified
+  </span>
+
+  <span className="rounded-full bg-green-900 px-3 py-1 text-sm text-green-300">
+    Global Supply
+  </span>
+
+</div>
           </div>
 
           {/* Quick Links */}

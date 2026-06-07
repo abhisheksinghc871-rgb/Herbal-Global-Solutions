@@ -1,3 +1,4 @@
+import WhatsAppButton from "@/components/WhatsAppButton";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -13,6 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.herbalglobalsolutions.com"),
+
   title: {
     default: "Herbal Global Solutions",
     template: "%s | Herbal Global Solutions",
@@ -42,12 +45,33 @@ export const metadata: Metadata = {
     },
   ],
 
+  creator: "Herbal Global Solutions",
+
   openGraph: {
     title: "Herbal Global Solutions",
     description:
-      "Premium herbal ingredients supplier serving global industries.",
-    type: "website",
+      "Premium herbal ingredients supplier serving pharmaceutical, nutraceutical, cosmetic and food industries worldwide.",
+    url: "https://www.herbalglobalsolutions.com",
+    siteName: "Herbal Global Solutions",
     locale: "en_US",
+    type: "website",
+
+    images: [
+      {
+        url: "/images/hero-herbal.png",
+        width: 1200,
+        height: 630,
+        alt: "Herbal Global Solutions",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Herbal Global Solutions",
+    description:
+      "Premium herbal ingredients supplier serving global industries.",
+    images: ["/images/hero-herbal.png"],
   },
 
   robots: {
@@ -67,8 +91,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
-      </body>
+  {children}
+  <WhatsAppButton />
+</body>
     </html>
   );
 }
