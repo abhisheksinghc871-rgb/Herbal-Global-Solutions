@@ -66,13 +66,16 @@ export default function ProductCategories() {
               key={product.slug}
               className="overflow-hidden rounded-2xl bg-white shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
             >
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={600}
-                height={400}
-                className="h-56 w-full object-cover"
-              />
+              <Link href={`/products/${product.slug}`}>
+  <Image
+    src={product.image}
+    alt={product.name}
+    width={600}
+    height={400}
+    className="h-56 w-full cursor-pointer object-cover transition hover:scale-105"
+  />
+  
+</Link>
 
               <div className="p-6">
                 <h3 className="text-2xl font-semibold text-green-700">
