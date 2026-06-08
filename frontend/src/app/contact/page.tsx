@@ -1,4 +1,75 @@
+"use client";
+
+import React, { useState } from "react";
+
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  country: "",
+  message: "",
+});
+const [successMessage, setSuccessMessage] = useState("");
+
+const handleChange = (
+  e: React.ChangeEvent<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  >
+) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch(
+      "http://localhost:5000/api/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+
+    setSuccessMessage(
+  "Inquiry submitted successfully. Our team will contact you soon."
+);
+
+window.scrollTo({
+  top: 0,
+  behavior: "smooth",
+});
+
+    setFormData({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    country: "",
+    message: "",
+  });
+
+  } catch (error) {
+    console.error(error);
+
+    alert("Something went wrong");
+  }
+};
+
   return (
     <main>
       <section className="bg-green-50 py-24">
@@ -32,7 +103,7 @@ export default function ContactPage() {
 
                 <p className="flex items-center gap-3">
                   <span>📧</span>
-                  <span>info@herbalglobalsolutions.com</span>
+                  <span>techopssimplified8@gmail.com</span>
                 </p>
 
                 <p className="flex items-center gap-3">
@@ -48,7 +119,17 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <form className="space-y-6 rounded-2xl border p-8 shadow-sm">
+            <form
+  onSubmit={handleSubmit}
+  className="space-y-6 rounded-2xl border p-8 shadow-sm"
+>
+
+
+            {successMessage && (
+  <div className="mb-4 rounded-lg border border-green-300 bg-green-100 p-3 text-sm text-green-800">
+    {successMessage}
+  </div>
+)}
 
               <div>
                 <label className="mb-2 block font-medium text-gray-700">
@@ -57,6 +138,9 @@ export default function ContactPage() {
 
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   placeholder="Enter your full name"
                   className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
@@ -70,6 +154,9 @@ export default function ContactPage() {
 
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   placeholder="Enter your email"
                   className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
@@ -83,6 +170,9 @@ export default function ContactPage() {
 
                 <input
                   type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
                   required
                   placeholder="Enter company name"
                   className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
@@ -95,11 +185,14 @@ export default function ContactPage() {
                 </label>
 
                 <input
-                  type="tel"
-                  required
-                  placeholder="Enter phone number"
-                  className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
-                />
+  type="tel"
+  name="phone"
+  value={formData.phone}
+  onChange={handleChange}
+  required
+  placeholder="Enter phone number"
+  className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
+/>
               </div>
 
               <div>
@@ -108,21 +201,24 @@ export default function ContactPage() {
                 </label>
 
                 <select
-                  required
-                  className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
-                >
-                  <option value="">Select Country</option>
-                  <option>India</option>
-                  <option>United States</option>
-                  <option>United Kingdom</option>
-                  <option>Germany</option>
-                  <option>France</option>
-                  <option>Canada</option>
-                  <option>Australia</option>
-                  <option>UAE</option>
-                  <option>Japan</option>
-                  <option>Singapore</option>
-                </select>
+  name="country"
+  value={formData.country}
+  onChange={handleChange}
+  required
+  className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
+>
+  <option value="">Select Country</option>
+  <option value="India">India</option>
+  <option value="United States">United States</option>
+  <option value="United Kingdom">United Kingdom</option>
+  <option value="Germany">Germany</option>
+  <option value="France">France</option>
+  <option value="Canada">Canada</option>
+  <option value="Australia">Australia</option>
+  <option value="UAE">UAE</option>
+  <option value="Japan">Japan</option>
+  <option value="Singapore">Singapore</option>
+</select>
               </div>
 
               <div>
@@ -131,11 +227,14 @@ export default function ContactPage() {
                 </label>
 
                 <textarea
-                  required
-                  rows={6}
-                  placeholder="Tell us about your requirements"
-                  className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
-                />
+  name="message"
+  value={formData.message}
+  onChange={handleChange}
+  required
+  rows={6}
+  placeholder="Tell us about your requirements"
+  className="w-full rounded-lg border border-gray-300 bg-white p-4 text-black focus:border-green-600 focus:outline-none"
+/>
               </div>
 
               <button

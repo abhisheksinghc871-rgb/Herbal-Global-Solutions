@@ -154,10 +154,10 @@ export default function Footer() {
 
               <li>
   <a
-    href="mailto:info@herbalglobalsolutions.com"
+    href="mailto:techopssimplified8@gmail.com"
     className="hover:text-green-400"
   >
-    📧 info@herbalglobalsolutions.com
+    📧 techopssimplified8@gmail.com
   </a>
 </li>
 
