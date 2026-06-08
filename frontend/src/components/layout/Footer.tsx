@@ -163,10 +163,10 @@ export default function Footer() {
 
 <li>
   <a
-    href="tel:+919876543210"
+    href="tel:+918103421613"
     className="hover:text-green-400"
   >
-    📞 +91 98765 43210
+    📞 +91 81034 21613
   </a>
 </li>
 

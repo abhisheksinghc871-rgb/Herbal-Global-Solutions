@@ -37,7 +37,7 @@ export default function ContactPage() {
 
                 <p className="flex items-center gap-3">
                   <span>📞</span>
-                  <span>+91 98765 43210</span>
+                  <span>+91 81034 21613</span>
                 </p>
 
                 <p className="flex items-center gap-3">
